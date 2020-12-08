@@ -101,6 +101,5 @@ public class Utilisateur {
 				+ motDePasse + ", credit=" + credit + ", administrateur=" + administrateur + "]";
 	}
 	
-	
 
 }
