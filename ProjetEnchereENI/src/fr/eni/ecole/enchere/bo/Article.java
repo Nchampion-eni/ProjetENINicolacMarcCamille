@@ -2,26 +2,26 @@ package fr.eni.ecole.enchere.bo;
 
 import java.util.Date;
 
-public class Article {
+public class Article extends Categorie {
 	private int id;
 	private String nom;
+	private Categorie categorie;
 	private float prix;
 	private int stock;
-	private String categorie;
 	private Date dateDebut = new Date();
 	private Date dateFin = new Date();
 
 	public Article() {
 	}
 
-	public Article(String nom, float prix, int stock, String categorie, Date dateDebut, Date dateFin) {
+	public Article(String nom, float prix, int stock, Date dateDebut, Date dateFin, Categorie categorie) {
 		super();
 		this.nom = nom;
 		this.prix = prix;
 		this.stock = stock;
-		this.categorie = categorie;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
+		this.categorie = categorie;
 	}
 
 	public int getId() {
@@ -56,14 +56,6 @@ public class Article {
 		this.stock = stock;
 	}
 
-	public String getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
-	}
-
 	public Date getDateDebut() {
 		return dateDebut;
 	}
@@ -78,6 +70,14 @@ public class Article {
 
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
 	@Override
@@ -110,8 +110,8 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Objets [ ID = " + id + ", nom = " + nom + ", prix = " + prix + ", stock = " + stock + ", categorie = "
-				+ categorie + ", dateDebut = " + dateDebut + ", dateFin = " + dateFin + " ]";
+		return "Article [id=" + id + ", nom=" + nom + ", categorie=" + categorie + ", prix=" + prix + ", stock=" + stock
+				+ ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + "]";
 	}
 
 }
