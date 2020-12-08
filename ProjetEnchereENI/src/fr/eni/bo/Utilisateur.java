@@ -15,6 +15,5 @@ public class Utilisateur {
 	private String administrateur;
 	
 	
-	
 
 }
