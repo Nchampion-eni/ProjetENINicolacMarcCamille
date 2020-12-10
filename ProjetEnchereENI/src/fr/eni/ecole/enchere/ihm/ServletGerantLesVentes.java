@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ServletGerantLesVentes
  */
-@WebServlet("/ServletGerantLesVentes")
+@WebServlet("/fr/eni/ecole/enchere/ihm/ServletGerantLesVentes")
 public class ServletGerantLesVentes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,71 +48,44 @@ public class ServletGerantLesVentes extends HttpServlet {
 	 */
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 /**
-	     * 1/Creer une enchere
-	     * connection utilisateur
-	     */
-		String url="jdbc:mysql://localhost:1080/bdd_ENCHERE";
-		String utilisateur =null;
-		String mdp =null;
-		 Connection cnx=null;
-		 try {
-			 cnx= DriverManager.getConnection(url,utilisateur,mdp);
-			 
-		 } catch( SQLException e) {
-			 
-		 } finally {
-			 if(cnx !=null)
-				 try {
-					 cnx.close();
-				 } catch( SQLException ignore) {
-					 System.out.println("une erreur est survenu");
-				 }
-		 }
-		
-		
-		
-		
-		
-		/**
-	     * creer un article
-	     * ajouter article a la BDD
-	     * afficher article dans onglet Vente
-	     * creer option supprimer vente
-	     * 
-	     * 2/encherir
-	     * connection utilisateur autre que vendeur
-	     * si solde compte utilisateur > prix enchere actuel = autorisé encherir a un prix > prix actuel
-	     * si solde inférieur = refus enchere
-	     * 
-	     * 
-	     * 
-	     * 3/fin de l'enchere
-	     * si Date==DateFinEnchere --> fin de l'enchere
-	     * le dernier utilisateur a avoir misé remporte l'enchere
-	     * envoie de l'article à l'adresse de retrait
-	     * 
-	     * 4/ fermeture de l'enchere
-	     * Utilisateur qui fait l'acquisition valide avoir reçu l'article
-	     * argent versé au vendeur direictement du compte de l'acquerreur
-	     * fermeture de l'enchere
-	     * 
-	     * 
-	     * 
-	     */
-	    
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vente.jsp").forward(request, response);
+
 	}
 
-}
+	
+	//protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		//	throws ServletException, IOException {
+		/**
+		 * 1/Creer une enchere connection utilisateur
+		 */
+	
+
+		/**
+		 * creer un article ajouter article a la BDD afficher article dans onglet Vente
+		 * creer option supprimer vente
+		 * 
+		 * 2/encherir connection utilisateur autre que vendeur si solde compte
+		 * utilisateur > prix enchere actuel = autorisé encherir a un prix > prix actuel
+		 * si solde inférieur = refus enchere
+		 * 
+		 * 
+		 * 
+		 * 3/fin de l'enchere si Date==DateFinEnchere --> fin de l'enchere le dernier
+		 * utilisateur a avoir misé remporte l'enchere envoie de l'article à l'adresse
+		 * de retrait
+		 * 
+		 * 4/ fermeture de l'enchere Utilisateur qui fait l'acquisition valide avoir
+		 * reçu l'article argent versé au vendeur direictement du compte de l'acquerreur
+		 * fermeture de l'enchere
+		 * 
+		 * 
+		 * 
+		 */
+	}
+
+//}

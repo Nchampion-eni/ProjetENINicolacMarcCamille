@@ -20,7 +20,7 @@ public class ServletConnexion extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/connection.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/connection.jsp").forward(request, response);
 		
 		
 	}
@@ -45,6 +45,31 @@ public class ServletConnexion extends HttpServlet {
 		if(pseudo !=null || mdp != null) {
 			
 			user = null;
+			/**
+			 * recherche dans la BDD --> requete select
+			 * 1/si pseudo ==BDD --> tout va bien
+			 * 2/si pseudo n'est pas dans la BDD --> afficher message d'erreur
+			 * BBD
+			 * Table utilisateur avec toute donnée
+			 * utilisateur = connection
+			 * utilisateur = utilisateur dnas la BDD
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 */
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// vérifier avec DB (utilisateurDAO)
 			// Ajout info utilisateur sur le profil ?? 
 			//session.setAttribute("pseudo", user.getPseudo()); <-- à tester
