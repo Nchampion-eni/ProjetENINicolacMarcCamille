@@ -12,9 +12,11 @@ public class Utilisateur {
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
-	private String credit;
+	private int credit;
 	private String administrateur;
-
+	
+		
+	
 	/**
 	 * @param pseudo
 	 * @param motDePasse
@@ -24,9 +26,11 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
-	public Utilisateur() {
 
+	public Utilisateur() {
+	
 	}
+
 
 	/**
 	 * @param id
@@ -43,7 +47,7 @@ public class Utilisateur {
 	 * @param administrateur
 	 */
 	public Utilisateur(int id, String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, String credit, String administrateur) {
+			String codePostal, String ville, String motDePasse, int credit, String administrateur) {
 		this.id = id;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -57,6 +61,7 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
+
 
 	/**
 	 * @return the id
@@ -65,12 +70,14 @@ public class Utilisateur {
 		return id;
 	}
 
+
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	/**
 	 * @return the pseudo
@@ -79,12 +86,14 @@ public class Utilisateur {
 		return pseudo;
 	}
 
+
 	/**
 	 * @param pseudo the pseudo to set
 	 */
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
+
 
 	/**
 	 * @return the nom
@@ -93,12 +102,14 @@ public class Utilisateur {
 		return nom;
 	}
 
+
 	/**
 	 * @param nom the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 
 	/**
 	 * @return the prenom
@@ -107,12 +118,14 @@ public class Utilisateur {
 		return prenom;
 	}
 
+
 	/**
 	 * @param prenom the prenom to set
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
 
 	/**
 	 * @return the email
@@ -121,12 +134,14 @@ public class Utilisateur {
 		return email;
 	}
 
+
 	/**
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	/**
 	 * @return the telephone
@@ -135,12 +150,14 @@ public class Utilisateur {
 		return telephone;
 	}
 
+
 	/**
 	 * @param telephone the telephone to set
 	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+
 
 	/**
 	 * @return the rue
@@ -149,12 +166,14 @@ public class Utilisateur {
 		return rue;
 	}
 
+
 	/**
 	 * @param rue the rue to set
 	 */
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
+
 
 	/**
 	 * @return the codePostal
@@ -163,12 +182,14 @@ public class Utilisateur {
 		return codePostal;
 	}
 
+
 	/**
 	 * @param codePostal the codePostal to set
 	 */
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
+
 
 	/**
 	 * @return the ville
@@ -177,12 +198,14 @@ public class Utilisateur {
 		return ville;
 	}
 
+
 	/**
 	 * @param ville the ville to set
 	 */
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+
 
 	/**
 	 * @return the motDePasse
@@ -191,6 +214,7 @@ public class Utilisateur {
 		return motDePasse;
 	}
 
+
 	/**
 	 * @param motDePasse the motDePasse to set
 	 */
@@ -198,19 +222,22 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
+
 	/**
 	 * @return the credit
 	 */
-	public String getCredit() {
+	public int getCredit() {
 		return credit;
 	}
+
 
 	/**
 	 * @param credit the credit to set
 	 */
-	public void setCredit(String credit) {
+	public void setCredit(int credit) {
 		this.credit = credit;
 	}
+
 
 	/**
 	 * @return the administrateur
@@ -219,6 +246,7 @@ public class Utilisateur {
 		return administrateur;
 	}
 
+
 	/**
 	 * @param administrateur the administrateur to set
 	 */
@@ -226,9 +254,8 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -239,9 +266,8 @@ public class Utilisateur {
 				+ "]";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -253,9 +279,8 @@ public class Utilisateur {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -279,7 +304,7 @@ public class Utilisateur {
 			return false;
 		return true;
 	}
+
+
+
 }
-
-
-

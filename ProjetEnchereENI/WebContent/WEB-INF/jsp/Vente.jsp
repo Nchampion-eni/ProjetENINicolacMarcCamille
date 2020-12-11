@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Page de vente</title>
 </head>
@@ -13,17 +14,15 @@
 
 	<label for="categorie">categorie :</label>
 	<input type="text" name="categorie">
-	
+
 	<label for="prix">prix :</label>
 	<input type="number" name="prix">
-	
+
 	<label for="stock">stock :</label>
 	<input type="number" name="stock">
-	
-	<label for="dateDebut"></label>
-	<input type="datetime-local" name="dateDebut">
-	
+
 	<label for="dateFin">date de fin d'enchere :</label>
 	<input type="datetime-local" name="dateFin">
+<input name="submit" type="submit" value="OK " >
 </body>
 </html>

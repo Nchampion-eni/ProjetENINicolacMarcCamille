@@ -4,15 +4,4 @@
 	<welcome-file-list>
 		<welcome-file>listeEleve</welcome-file>
 	</welcome-file-list>
-	<servlet>
-		<servlet-name>ServletGerantLesVentes</servlet-name>
-		<servlet-class>fr.eni.ecole.enchere.ihm.ServletGerantLesVentes</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ServletGerantLesVentes</servlet-name>
-		<url-pattern>ServletGerantLesVentes</url-pattern>
-	</servlet-mapping>
-	 <welcome-file-list>
-        <welcome-file>Vente.jsp</welcome-file>
-        </welcome-file-list>
 </web-app>
