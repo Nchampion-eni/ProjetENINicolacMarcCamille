@@ -8,9 +8,12 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-abstract class ConnectionProvider {
+
+
+
+abstract class ConnectionDB {
 	private static DataSource dataSource;
-	
+	/**
 	/**
 	 * Au chargement de la classe, la DataSource est recherchée dans l'arbre JNDI
 	 */
@@ -18,12 +21,11 @@ abstract class ConnectionProvider {
 	{
 		Context context;
 		try {
-			//jdbc/pool_cnx
 			context = new InitialContext();
-			ConnectionProvider.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/pool_cnx");
+			ConnectionDB.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/pool_cnx");
 		} catch (NamingException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Cannot access the database");
+			throw new RuntimeException("Impossible d'accéder à la base de données");
 		}
 	}
 	
@@ -35,6 +37,7 @@ abstract class ConnectionProvider {
 	 */
 	public static Connection getConnection() throws SQLException
 	{
-		return ConnectionProvider.dataSource.getConnection();
+		return ConnectionDB.dataSource.getConnection();
 	}
+	
 }

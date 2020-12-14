@@ -27,7 +27,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		user.setRue(rs.getString(7));
 		user.setCodePostal(rs.getString(8));
 		user.setVille(rs.getString(9));
-		//user.setMotDePasse(rs.getString(10));
+		user.setMotDePasse(rs.getString(10));
 		user.setCredit(rs.getInt(11));
 		user.setAdministrateur(rs.getString(12));
 		
@@ -35,15 +35,15 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 	
 	
-	public Utilisateur verifPseudoMdpEmail(String pseudo, String mdp, String email) {
+	public Utilisateur verifPseudoMdpEmail(String identifiant, String mdp) {
 		Utilisateur user = new Utilisateur();
 		
 		try(Connection cnx = ConnectionDB.getConnection())
 		{						
 			PreparedStatement pstmt = cnx.prepareStatement( VERIF_PSEUDO_MDP_EMAIL);
-			pstmt.setString(1,pseudo);
-			pstmt.setString(2, mdp);
-			pstmt.setString(3, email);
+			pstmt.setString(1,identifiant);
+			pstmt.setString(3, mdp);
+			pstmt.setString(2, identifiant);
 			pstmt.executeQuery();
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -61,9 +61,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 
-	@Override
 	public void Insert(Utilisateur user) {
-		// TODO Auto-generated method stub
 		
 	}
 

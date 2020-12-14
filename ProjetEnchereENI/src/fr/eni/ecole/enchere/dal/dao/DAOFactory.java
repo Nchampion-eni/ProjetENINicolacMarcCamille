@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.dal;
+package fr.eni.ecole.enchere.dal.dao;
 
 public abstract class DAOFactory {
 	

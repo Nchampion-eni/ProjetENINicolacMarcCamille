@@ -1,27 +1,24 @@
 package fr.eni.ecole.enchere.bo;
 
-import java.util.Date;
-
 public class Article extends Categorie {
 	private int id;
 	private String nom;
-	private Categorie categorie;
 	private float prix;
 	private int stock;
-	private Date dateDebut = new Date();
-	private Date dateFin = new Date();
+	private String dateDebut;
+	private String dateFin;
+	private String description;
 
-	public Article() {
-	}
-
-	public Article(String nom, float prix, int stock, Date dateDebut, Date dateFin, Categorie categorie) {
-		super();
+	public Article(String nom, float prix, int stock, String dateDebut, String dateFin, int noCategorie,
+			String description) {
+		super(getNoCategorie());
 		this.nom = nom;
 		this.prix = prix;
 		this.stock = stock;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.categorie = categorie;
+		this.noCategorie = noCategorie;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -40,6 +37,14 @@ public class Article extends Categorie {
 		this.nom = nom;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public float getPrix() {
 		return prix;
 	}
@@ -56,28 +61,20 @@ public class Article extends Categorie {
 		this.stock = stock;
 	}
 
-	public Date getDateDebut() {
+	public String getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(String dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Date getDateFin() {
+	public String getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
-	}
-
-	public Categorie getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
 	}
 
 	@Override

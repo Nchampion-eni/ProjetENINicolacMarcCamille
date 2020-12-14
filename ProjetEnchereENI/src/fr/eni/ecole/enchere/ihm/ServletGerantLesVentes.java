@@ -1,7 +1,10 @@
 package fr.eni.ecole.enchere.ihm;
 
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +12,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import fr.eni.ecole.enchere.bo.Article;
 import fr.eni.ecole.enchere.bo.Categorie;
+import fr.eni.ecole.enchere.bo.Article;
 
 /**
- * Servlet implementation class ServletGerantLesVentes 
+ * Servlet implementation class ServletGerantLesVentes
  */
-//@WebServlet("/ServletGerantLesVentes")
+@WebServlet("/ServletGerantLesVentes")
 public class ServletGerantLesVentes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-public ServletGerantLesVentes() {
-	// TODO Auto-generated constructor stub
-}
-	/*  Algo :
-	 * 1/Creer une enchere connection utilisateur creer un article ajouter article a
-	 * la BDD afficher article dans onglet Vente creer option supprimer vente
+
+	public ServletGerantLesVentes() {
+		// TODO Auto-generated constructor stub
+	}
+	/*
+	 * Algo : 1/Creer une enchere connection utilisateur creer un article ajouter
+	 * article a la BDD afficher article dans onglet Vente creer option supprimer
+	 * vente
 	 * 
 	 * 2/encherir connection utilisateur autre que vendeur si solde compte
 	 * utilisateur > prix enchere actuel = autorisé encherir a un prix > prix actuel
@@ -39,7 +43,7 @@ public ServletGerantLesVentes() {
 	 * 4/ fermeture de l'enchere Utilisateur qui fait l'acquisition valide avoir
 	 * reçu l'article argent versé au vendeur direictement du compte de l'acquerreur
 	 * fermeture de l'enchere
-	
+	 * 
 	 */
 
 	/**
@@ -51,69 +55,60 @@ public ServletGerantLesVentes() {
 		/**
 		 * 1/Creer une enchere connection utilisateur
 		 */
-		HttpSession session = request.getSession();
-		if (session != null) {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vente.jsp").forward(request, response);
-		} else {
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/erreurConnection.jsp");
-		}
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vente.jsp").forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		
 		/**
 		 * creer un article ajouter article a la BDD afficher article dans onglet Vente
 		 */
 
-		
-		
-		
-		
-		String Nom = request.getParameter("Nom");
-		String categorie = request.getParameter("Categorie");
-		String prix = request.getParameter("prix");
-		String stock = request.getParameter("stock");
-		String dateFin    = request.getParameter("Date de fin");
-		String Valider = request.getParameter("Valider");
-		
-		public Article article (String nom, float prix, int stock, Date dateDebut, Date dateFin, Categorie categorie) {
-			this.Nom = nom;
-			this.prix = prix;
-			this.stock = stock;
-			this.dateDebut = dateDebut;
-			this.dateFin = dateFin;
-			this.categorie = categorie;
+		String Nom = (String) request.getAttribute("Nom");
+		Integer categorie = (int) request.getAttribute("value");
+		float prix = Float.parseFloat((String) request.getAttribute("prix"));
+		Integer stock = Integer.parseInt((String) request.getAttribute("stock"));
+		String description = (String) request.getAttribute("description");
+
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		String dateDebut = request.getParameter("dateDebut");
+		Date startDate = null;
+		try {
+			startDate = (Date) df.parse(dateDebut);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
-		
-		HttpSession session = request.getSession(); 
-		
-		session.setAttribute("Nom", Nom);
-		session.setAttribute("Categorie",categorie);
-		session.setAttribute("Nom", Nom);
-		session.setAttribute("Nom", Nom);
-		session.setAttribute("Nom", Nom);
-		session.setAttribute("Nom", Nom);
-		
-		if(Nom !=null || categorie != null || prix!=null || stock!=null || dateFin!=null) {
-			
-			article = null;
-}else {
-			
-		}
-	
 
+		DateFormat df2 = new SimpleDateFormat("dd-MM-yyyy");
+		String dateFin = request.getParameter("dateFin");
+		Date startDate2 = null;
+		try {
+			startDate = (Date) df.parse(dateFin);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 
+		// simpleDateFromat
+		Article article = new Article(Nom, prix, stock, dateDebut, dateFin, categorie, description);
 
+		HttpSession session = request.getSession();
 
-				
-				 /** 
-				 * creer option supprimer vente
-				 * 
-				 * 
-				 */
-				
+		session.setAttribute("Nom", Nom);
+		session.setAttribute("value", categorie);
+		session.setAttribute("prix", prix);
+		session.setAttribute("stock", stock);
+		session.setAttribute("dateDebut", dateDebut);
+		session.setAttribute("dateFin", dateFin);
+		session.setAttribute("description", description);
+
+		/**
+		 * creer option supprimer vente
+		 * 
+		 * 
+		 */
+
 		/**
 		 * 2/encherir connection utilisateur autre que vendeur si solde compte
 		 * utilisateur > prix enchere actuel = autorisé encherir a un prix > prix actuel

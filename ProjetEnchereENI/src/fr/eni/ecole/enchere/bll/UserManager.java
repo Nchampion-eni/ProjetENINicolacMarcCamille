@@ -1,19 +1,38 @@
 package fr.eni.ecole.enchere.bll;
 
+import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.dao.DAOFactory;
 import fr.eni.ecole.enchere.dal.dao.UtilisateurDAO;
 import fr.eni.ecole.enchere.dal.dao.UtilisateurDAOJdbcImpl;
 
 public class UserManager {
-	
+
 	private UtilisateurDAO utilisateurDAO;
 
 	public UserManager() {
 		this.utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
-//	
-//	//Vérification 
-//	
+
+	// Vérification
+
+	public Utilisateur connectionUser(String identifiant, String mdp) throws Exception {
+
+		if (identifiant != null && mdp != null) {
+
+			Utilisateur u = utilisateurDAO.verifPseudoMdpEmail(identifiant, mdp);
+			if (u == null) {
+				throw new Exception("login mot de passe incorrect");
+
+			} else {
+				return u;
+			}
+		}
+		else {
+			throw new Exception("Identifiant ou mot de passe nulle");
+		}
+
+	}
+
 //	if (pseudo != null || email != null && mdp != null) {
 //		
 //		user = null;
@@ -29,11 +48,9 @@ public class UserManager {
 //		
 //		if(user != null && user.getPseudo() != null) {
 //			
-//		request.getSession().setAttribute("UserOK", user);
 //			
 //		// Rediriger vers la page d'accueil ?
 //		
-//		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);			
 //		//System.out.println("réussi");
 //
 //		session.setAttribute("sessionUtilisateur", user);
@@ -43,6 +60,5 @@ public class UserManager {
 //		//this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);
 //		//System.out.println("raté");
 //		// Mdp ou indetifiant incorrect
-//			doGet(request, response);
 //	}
 }
