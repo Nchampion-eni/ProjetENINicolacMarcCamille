@@ -2,6 +2,7 @@ package fr.eni.ecole.enchere.ihm;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,8 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import fr.eni.ecole.enchere.bo.Categorie;
+
 import fr.eni.ecole.enchere.bo.Article;
+import fr.eni.ecole.enchere.dal.dao.ArticleDAO;
+import fr.eni.ecole.enchere.dal.dao.ArticleDAOjdbcImpl;
 
 /**
  * Servlet implementation class ServletGerantLesVentes
@@ -68,7 +71,7 @@ public class ServletGerantLesVentes extends HttpServlet {
 		 */
 
 		String Nom = (String) request.getAttribute("Nom");
-		Integer categorie = (int) request.getAttribute("value");
+		Integer categorie = (int) request.getAttribute("categorie");
 		float prix = Float.parseFloat((String) request.getAttribute("prix"));
 		Integer stock = Integer.parseInt((String) request.getAttribute("stock"));
 		String description = (String) request.getAttribute("description");
@@ -89,20 +92,32 @@ public class ServletGerantLesVentes extends HttpServlet {
 			startDate = (Date) df.parse(dateFin);
 		} catch (ParseException e) {
 			e.printStackTrace();
-		} 
+		}
 		// simpleDateFromat
 		Article article = new Article(Nom, prix, stock, dateDebut, dateFin, categorie, description);
 
 		HttpSession session = request.getSession();
 
 		session.setAttribute("Nom", Nom);
-		session.setAttribute("value", categorie);
 		session.setAttribute("prix", prix);
 		session.setAttribute("stock", stock);
 		session.setAttribute("dateDebut", dateDebut);
 		session.setAttribute("dateFin", dateFin);
+		session.setAttribute("categorie", categorie);
 		session.setAttribute("description", description);
+		if (Nom != null || dateFin != null || stock != null) {
 
+			ArticleDAOjdbcImpl articleDao = new ArticleDAOjdbcImpl();
+			ArticleDAO art = new ArticleDAO();
+			try {
+				articleDao.AjouterVente(article);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			articleDao.Insert(article);
+
+		}
 		/**
 		 * creer option supprimer vente
 		 * 

@@ -1,20 +1,20 @@
 package fr.eni.ecole.enchere.bo;
 
 public class Categorie {
-	protected static int noCategorie;
+	protected int noCategorie;
 	private String libelle;
 
 	public Categorie(int noCategorie) {
 		super();
-		Categorie.noCategorie = noCategorie;
+		this.noCategorie = noCategorie;
 	}
 
-	public static int getNoCategorie() {
+	public int getNoCategorie() {
 		return noCategorie;
 	}
 
 	public void setNoCategorie(int noCategorie) {
-		Categorie.noCategorie = noCategorie;
+		this.noCategorie = noCategorie;
 	}
 
 	public String getLibelle() {

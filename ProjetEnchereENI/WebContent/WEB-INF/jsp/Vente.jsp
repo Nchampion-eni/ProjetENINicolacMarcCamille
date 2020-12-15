@@ -9,6 +9,7 @@
 </head>
 <h1>Veuillez rentrée le details de l'article à mettre en vente</h1>
 <body>
+<form action="ServletGerantLesVentes" method="post">
 	<label for="nom">nom :</label>
 	<input type="text" name="nom">
 
@@ -25,16 +26,38 @@
 
 	<label for="stock">stock :</label>
 	<input type="number" name="stock">
-	
-	<label for="dateDebut">Date du jour : <span class="requis"></span></label>
-                <input type="date" name="disponibilite" value=""  />
 
-	<label for="dateFin">date de fin de l'enchère : <span class="requis"></span></label>
-                <input type="date" name="disponibilite" value=""  />
-	
-	
+	<label for="dateDebut">Date du jour : <span class="requis"></span></label>
+	<input type="date" name="disponibilite" value="" />
+
+	<label for="dateFin">date de fin de l'enchère : <span
+		class="requis"></span></label>
+	<input type="date" name="disponibilite" value="" />
+
+
 	<label for="description">Description :</label>
 	<input type="text" name="description">
-	<input name="submit" type="submit" value="OK ">
+
+
+	<input name="submit" type="submit" value="OK">
+	</form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

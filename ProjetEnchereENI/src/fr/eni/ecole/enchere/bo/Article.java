@@ -11,7 +11,7 @@ public class Article extends Categorie {
 
 	public Article(String nom, float prix, int stock, String dateDebut, String dateFin, int noCategorie,
 			String description) {
-		super(getNoCategorie());
+		super(noCategorie);
 		this.nom = nom;
 		this.prix = prix;
 		this.stock = stock;
@@ -107,7 +107,7 @@ public class Article extends Categorie {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", nom=" + nom + ", categorie=" + categorie + ", prix=" + prix + ", stock=" + stock
+		return "Article [id=" + id + ", nom=" + nom + ", categorie=" + noCategorie + ", prix=" + prix + ", stock=" + stock
 				+ ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + "]";
 	}
 

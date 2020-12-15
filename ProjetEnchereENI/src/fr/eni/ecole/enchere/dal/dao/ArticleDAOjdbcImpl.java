@@ -2,14 +2,16 @@ package fr.eni.ecole.enchere.dal.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.ecole.enchere.bo.Article;
+import fr.eni.ecole.enchere.bo.Utilisateur;
 
 public class ArticleDAOjdbcImpl {
-	private static final String ARTICLE = "INSERT INTO ARTICLES_VENDUS (no_article,nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES (?????????);";
+	private final String ARTICLE = "INSERT INTO ARTICLES_VENDUS (no_article,nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES (?????????);";
 
-	public static void AjouterVente(Article article) throws SQLException {
+	public Article AjouterVente(Article article) throws SQLException {
 		Connection cnx;
 
 		cnx = ConnectionDB.getConnection();
@@ -22,9 +24,16 @@ public class ArticleDAOjdbcImpl {
 		pstmt.setFloat(4, article.getPrix());
 		pstmt.setLong(5, article.getStock());
 		pstmt.setLong(6, article.getId());
-		pstmt.setDate(7, article.getDateDebut());
-		pstmt.setDate(8, article.getDateFin());
+		pstmt.setString(7, article.getDateDebut());
+		pstmt.setString(8, article.getDateFin());
+		pstmt.setInt(9, article.getNoCategorie());
+		pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
+		cnx.close();
+		return article;
 
 	}
 
+	public void Insert(Article article) {
+	}
 }
