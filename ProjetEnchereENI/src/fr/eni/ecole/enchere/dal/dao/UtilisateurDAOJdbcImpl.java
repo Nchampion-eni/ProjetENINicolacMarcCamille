@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.ecole.enchere.bo.Utilisateur;
+import fr.eni.ecole.enchere.dal.ConnectionDB;
 
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
@@ -35,15 +36,15 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 	
 	
-	public Utilisateur verifPseudoMdpEmail(String identifiant, String mdp) {
+	public Utilisateur verifPseudoMdpEmail(String pseudo, String mdp) throws Exception {
 		Utilisateur user = new Utilisateur();
 		
 		try(Connection cnx = ConnectionDB.getConnection())
 		{						
 			PreparedStatement pstmt = cnx.prepareStatement( VERIF_PSEUDO_MDP_EMAIL);
-			pstmt.setString(1,identifiant);
+			pstmt.setString(1,pseudo);
+			pstmt.setString(2, pseudo);
 			pstmt.setString(3, mdp);
-			pstmt.setString(2, identifiant);
 			pstmt.executeQuery();
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -55,13 +56,15 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			//Exception ??
+			throw new Exception("Erreur sur la vérification de l'utilisateur " + e.getMessage());
 		}	
-		return null;
+		return user;
 	}
 
 
+	@Override
 	public void Insert(Utilisateur user) {
+		
 		
 	}
 

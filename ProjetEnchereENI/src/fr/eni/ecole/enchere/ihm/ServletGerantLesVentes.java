@@ -1,11 +1,8 @@
 package fr.eni.ecole.enchere.ihm;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.ecole.enchere.bo.Article;
-import fr.eni.ecole.enchere.dal.dao.ArticleDAO;
 import fr.eni.ecole.enchere.dal.dao.ArticleDAOjdbcImpl;
 
 /**
@@ -70,52 +66,38 @@ public class ServletGerantLesVentes extends HttpServlet {
 		 * creer un article ajouter article a la BDD afficher article dans onglet Vente
 		 */
 
-		String Nom = (String) request.getAttribute("Nom");
-		Integer categorie = (int) request.getAttribute("categorie");
-		float prix = Float.parseFloat((String) request.getAttribute("prix"));
-		Integer stock = Integer.parseInt((String) request.getAttribute("stock"));
-		String description = (String) request.getAttribute("description");
-
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-		String dateDebut = request.getParameter("dateDebut");
-		Date startDate = null;
-		try {
-			startDate = (Date) df.parse(dateDebut);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		DateFormat df2 = new SimpleDateFormat("dd-MM-yyyy");
+		String Nom = request.getParameter("Nom");
+		Integer categorie = Integer.parseInt(request.getParameter("categorie"));
+		float prix = Float.parseFloat(request.getParameter("prix"));
+		Integer stock = Integer.parseInt(request.getParameter("stock"));
+		String description = request.getParameter("description");
+		//String dateDebut = request.getParameter("dateDebut");
+		//LocalDate ld = LocalDate.parse(dateDebut);
 		String dateFin = request.getParameter("dateFin");
-		Date startDate2 = null;
-		try {
-			startDate = (Date) df.parse(dateFin);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		LocalDate ld2 = LocalDate.parse(dateFin);
 		// simpleDateFromat
-		Article article = new Article(Nom, prix, stock, dateDebut, dateFin, categorie, description);
+		Article article = new Article(Nom, prix, stock, ld2, categorie, description);
 
 		HttpSession session = request.getSession();
 
 		session.setAttribute("Nom", Nom);
 		session.setAttribute("prix", prix);
 		session.setAttribute("stock", stock);
-		session.setAttribute("dateDebut", dateDebut);
-		session.setAttribute("dateFin", dateFin);
+		//session.setAttribute("dateDebut", ld);
+		session.setAttribute("dateFin", ld2);
 		session.setAttribute("categorie", categorie);
 		session.setAttribute("description", description);
 		if (Nom != null || dateFin != null || stock != null) {
 
 			ArticleDAOjdbcImpl articleDao = new ArticleDAOjdbcImpl();
-			ArticleDAO art = new ArticleDAO();
+			//ArticleDAO art = new ArticleDAO();
 			try {
 				articleDao.AjouterVente(article);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			articleDao.Insert(article);
+			articleDao.insert(article);
 
 		}
 		/**

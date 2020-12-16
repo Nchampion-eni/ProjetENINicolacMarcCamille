@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.dal.dao;
+package fr.eni.ecole.enchere.dal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 
 
-abstract class ConnectionDB {
+public abstract class ConnectionDB {
 	private static DataSource dataSource;
 	/**
 	/**

@@ -1,9 +1,8 @@
 package fr.eni.ecole.enchere.bll;
 
 import fr.eni.ecole.enchere.bo.Utilisateur;
-import fr.eni.ecole.enchere.dal.dao.DAOFactory;
+import fr.eni.ecole.enchere.dal.DAOFactory;
 import fr.eni.ecole.enchere.dal.dao.UtilisateurDAO;
-import fr.eni.ecole.enchere.dal.dao.UtilisateurDAOJdbcImpl;
 
 public class UserManager {
 

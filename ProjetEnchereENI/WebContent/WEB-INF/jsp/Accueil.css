@@ -1,8 +1,156 @@
-@charset "UTF-8";
-body{
-background-color: linen	
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Anton&family=Pacifico&display=swap');
+
+.wrapper {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+font-family: 'Anton';
+    color: white;
+    text-align: center;
+    
+    flex: auto;
+    
+    background: null;
+    text-decoration: underline;
 }
-H1 {
-	position: relative;
-top: 40px; left: 40px;
+.wrapper > div {
+  flex: 1 1 50px;
+}
+
+.red
+{
+    
+    color:red;
+   
+    
+    
+}
+.test {
+
+    font-family: 'Anton';
+    color: white;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-left: 30px;
+    
+}
+
+.list {
+
+    font-family: 'Anton';
+    color: white;
+     display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-left: 30px;
+    
+    
+}
+
+a {
+
+    
+    
+    font-family: 'Anton';
+    color: black;
+     display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-left: 30px;
+    background-color: rgba(0, 0, 255, 0);
+    
+    
+}
+
+.input {
+
+    color: white;
+    font-family: 'Anton';
+}
+
+
+.Accueil1 {
+    text-align: center;
+    font-family: 'Anton';
+    flex: auto;
+    color: red;
+    background: null;
+    text-decoration: underline;
+    font-size: 5em;
+    background-color: rgba(0, 0, 255, 0);
+}
+
+flex-direction: column;
+}
+
+div {
+    background-color: white;
+    font-size-adjust: auto;
+    text-decoration: underline;
+    font-family: 'Anton';
+    background-color: rgba(0, 0, 255, 0);
+
+}
+
+
+.Article {
+
+    font-size: center;
+    font-family: 'Anton';
+    box-decoration-break: clone;
+    background-color: rgba(0, 0, 255, 0);
+
+
+}
+
+    {
+
+    width: 10px;
+    height: 10px;
+    background-color: aqua;
+
+}
+
+
+.Achat {
+
+    background-color: white;
+    font-size: center;
+    font-family: 'Anton';
+    box-decoration-break: clone;
+    text-decoration: underline;
+    background-color: rgba(0, 0, 255, 0);
+
+}
+
+img {
+    margin-right: 10px;
+    width: 66px;
+    box-sizing: content-box;
+    background-color: rgba(0, 0, 255, 0);
+}
+
+
+}
+
+.item {
+    flex: 1 1 auto;
+    margin: 4px;
+    background-color: rgba(0, 0, 255, 0);
+}
+
+body {
+    background-image: url(Image/Image/Fond%20abstract_digital_art_geometry_lines_Portrait_Display_Triangle-822847.jpg!d.jpeg);
+  display: flex;
+  flex-wrap: wrap;
+font-family: 'Anton';
+    color: white;
+    text-align: center;
+   
+        
+    
+    
+        
 }
