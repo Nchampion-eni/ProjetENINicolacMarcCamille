@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Vente</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/vente.css" />
 </head>
 <body>
 <h1>Votre Article :</h1>
@@ -19,5 +20,6 @@
 	
 	
 	<button type="submit" name="modifier">Modifier</button>	
+	<%@include file="footer.jsp"%>
 </body>
 </html>

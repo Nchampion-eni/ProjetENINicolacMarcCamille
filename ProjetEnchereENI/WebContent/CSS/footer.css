@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: baseline;
+  align-content: space-between
+}
+.item {
+  flex: auto;
+  margin: 10 px;
+}
