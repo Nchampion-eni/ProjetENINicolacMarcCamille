@@ -41,7 +41,7 @@ public class ServletConnexion extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			request.getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp").forward(request, response);
 			System.out.println("c'est ok");
 			
 		} catch (Exception e) {

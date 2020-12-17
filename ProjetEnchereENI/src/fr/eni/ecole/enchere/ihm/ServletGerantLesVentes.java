@@ -2,7 +2,11 @@ package fr.eni.ecole.enchere.ihm;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,31 +70,32 @@ public class ServletGerantLesVentes extends HttpServlet {
 		 * creer un article ajouter article a la BDD afficher article dans onglet Vente
 		 */
 
-		String Nom = request.getParameter("Nom");
+		String Nom = request.getParameter("nom");
 		Integer categorie = Integer.parseInt(request.getParameter("categorie"));
 		float prix = Float.parseFloat(request.getParameter("prix"));
 		Integer stock = Integer.parseInt(request.getParameter("stock"));
 		String description = request.getParameter("description");
-		//String dateDebut = request.getParameter("dateDebut");
-		//LocalDate ld = LocalDate.parse(dateDebut);
-		String dateFin = request.getParameter("dateFin");
-		LocalDate ld2 = LocalDate.parse(dateFin);
-		// simpleDateFromat
-		Article article = new Article(Nom, prix, stock, ld2, categorie, description);
 
+		LocalDate dateDebut= LocalDate.now();
+		LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
+		int no_utilisateur = 1;
+		// simpleDateFromat
+		Article article = new Article(Nom, prix, stock, dateDebut, dateFin, categorie, description);
+System.out.println(article.toString());
 		HttpSession session = request.getSession();
 
 		session.setAttribute("Nom", Nom);
 		session.setAttribute("prix", prix);
 		session.setAttribute("stock", stock);
-		//session.setAttribute("dateDebut", ld);
-		session.setAttribute("dateFin", ld2);
+		session.setAttribute("dateDebut", dateDebut);
+		session.setAttribute("dateFin", dateFin);
 		session.setAttribute("categorie", categorie);
 		session.setAttribute("description", description);
+		session.setAttribute("no_utilisateur", no_utilisateur);
 		if (Nom != null || dateFin != null || stock != null) {
 
 			ArticleDAOjdbcImpl articleDao = new ArticleDAOjdbcImpl();
-			//ArticleDAO art = new ArticleDAO();
+			// ArticleDAO art = new ArticleDAO();
 			try {
 				articleDao.AjouterVente(article);
 			} catch (SQLException e) {
@@ -98,7 +103,8 @@ public class ServletGerantLesVentes extends HttpServlet {
 				e.printStackTrace();
 			}
 			articleDao.insert(article);
-
+			request.setAttribute("article", article);
+			request.getRequestDispatcher("/WEB-INF/jsp/afficherVente.jsp").forward(request, response);
 		}
 		/**
 		 * creer option supprimer vente

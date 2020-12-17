@@ -11,13 +11,14 @@ public class Article extends Categorie {
 	private LocalDate dateFin;
 	private String description;
 
-	public Article(String nom, float prix, int stock, LocalDate dateFin, int noCategorie,
+	public Article(String nom, float prix, int stock, LocalDate dateDebut, LocalDate dateFin, int noCategorie,
 			String description) {
 		super(noCategorie);
 		this.nom = nom;
 		this.prix = prix;
 		this.stock = stock;
-			this.dateFin = dateFin;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 		this.noCategorie = noCategorie;
 		this.description = description;
 	}

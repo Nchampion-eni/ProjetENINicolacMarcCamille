@@ -41,22 +41,22 @@ public class ServletInscription extends HttpServlet {
 		String Conditions = request.getParameter("Conditions");
 		String Valider = request.getParameter("Valider");
 		
-		Utilisateur user = new Utilisateur (Nom,Prenom,Pseudo,Téléphone,Adresse,Ville,CodePostal,Motdepasse,Confirmation,Conditions,Valider);
-		
-		ServletInscription session = request.getSession();
-		
-		session.setAttribute("Nom", Nom);
-		session.setAttribute("Pseudo", Prenom);
-		
-		if(Nom !=null || Prenom != null || Pseudo!=null || Téléphone!=null || Adresse!=null || Ville!=null) {
-			
-			user = null;
-}else {
-			
-		}
-	}
-
-	private void setAttribute(String string, String nom) {
-		
+//		Utilisateur user = new Utilisateur (Nom,Prenom,Pseudo,Téléphone,Adresse,Ville,CodePostal,Motdepasse,Confirmation,Conditions,Valider);
+//		
+//		ServletInscription session = request.getSession();
+//		
+//		session.setAttribute("Nom", Nom);
+//		session.setAttribute("Pseudo", Prenom);
+//		
+//		if(Nom !=null || Prenom != null || Pseudo!=null || Téléphone!=null || Adresse!=null || Ville!=null) {
+//			
+//			user = null;
+//}else {
+//			
+//		}
+//	}
+//
+//	private void setAttribute(String string, String nom) {
+//		
 	}
 }
