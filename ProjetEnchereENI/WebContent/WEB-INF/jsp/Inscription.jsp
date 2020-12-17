@@ -15,6 +15,7 @@
 	crossorigin="anonymous">
 
 <title>Inscription</title>
+<%@include file="header.jsp"%>
 </head>
 
 <body>

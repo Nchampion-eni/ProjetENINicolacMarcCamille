@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Vente</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/vente.css" />
+<%@include file="header.jsp"%>
 </head>
 <body>
 <h1>Votre Article :</h1>

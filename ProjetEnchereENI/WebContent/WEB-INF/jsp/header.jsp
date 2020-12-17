@@ -1,7 +1,20 @@
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/header.css" />
+
 <header>
 	<nav>
-		<a href="accueil.jsp">ENI-Enchères</a>
+		<a href="./ServletAccueil">ENI-Enchères</a>
 	</nav>
-	<h1>LE SITE N°1 DES VENTES AUX ENCHÈRES</h1>
-	
+	<section>
+	</section>
+	<section class="container">
+		<article class="item">
+			<h4>Ventes</h4>
+		</article>
+		<article class="item">
+			<h4>Profil</h4>
+		</article>
+		<article class="item">
+			<h4>LE SITE N°1 DES VENTES AUX ENCHÈRES</h4>
+		</article>
+	</section>
 </header>

@@ -1,6 +1,23 @@
-@charset "UTF-8";
+/*MAIN*/
+body {
+  background-image: url("img/0-7607_wallpaper-huawei-honor-7x-wallpaper-android-abstract-4k.jpg");
+}
+main{
+    text-align: center;
+    background-color: whitesmoke;
+    margin-left:200px;
+    margin-right: 200px;
+   
+}
+form{
+    padding: 100px;
+}
+fieldset{
+	padding: 50px;
+}
 
 
+/*Footer*/
 .bloc {
     padding: 20px;
     background-color: #f16f4d;
@@ -40,4 +57,3 @@ footer {
     flex: 1 1 auto;
     margin: 34px;
 }
-

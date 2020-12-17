@@ -1,63 +1,104 @@
 package fr.eni.ecole.enchere.bll;
 
+import javax.servlet.http.HttpSession;
+
+import fr.eni.ecole.enchere.BusinessException;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.DAOFactory;
-import fr.eni.ecole.enchere.dal.dao.UtilisateurDAO;
+import fr.eni.ecole.enchere.dal.UtilisateurDAO;
+import fr.eni.ecole.enchere.dal.dao.UtilisateurDAOJdbcImpl;
 
 public class UserManager {
-
+	
 	private UtilisateurDAO utilisateurDAO;
 
 	public UserManager() {
 		this.utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
 
-	// Vérification
-
-	public Utilisateur connectionUser(String identifiant, String mdp) throws Exception {
-
-		if (identifiant != null && mdp != null) {
-
-			Utilisateur u = utilisateurDAO.verifPseudoMdpEmail(identifiant, mdp);
-			if (u == null) {
-				throw new Exception("login mot de passe incorrect");
-
-			} else {
-				return u;
-			}
-		}
-		else {
-			throw new Exception("Identifiant ou mot de passe nulle");
-		}
-
+	public Utilisateur connectionUser(String pseudo, String mdp) throws Exception{
+		
+		
+		boolean verifPseudo = verifPseudo(pseudo);
+		boolean verifMdp = verifMdp(mdp);
+		Utilisateur user = new Utilisateur();
+		
+		
+		if(verifMdp&&verifPseudo == true) {
+			System.out.println("ça passe");
+			return user = utilisateurDAO.verifPseudoMdpEmail(pseudo, mdp);		
+		}else {
+			BusinessException be = new BusinessException();
+			System.out.println("nop");
+			be.ajouterErreur("Login ou mot de passe incorrecte");	
+			throw be;
+			
+			
+		}	
+		
+		
 	}
-
-//	if (pseudo != null || email != null && mdp != null) {
+	
+//	private boolean verifPseudo(String pseudo) {
+//		Utilisateur user = new Utilisateur();
 //		
-//		user = null;
+//		if(user.getPseudo().equals(pseudo) && pseudo != null) {			
+//			return true;
+//		}else {			
+//			BusinessException be = new BusinessException();
+//			be.ajouterErreur("Login incorrecte");
+//		return false;
+//		}
+//	}
+	
+//	private boolean verifMdp(String mdp) {
+//		Utilisateur user = new Utilisateur();
 //		
-//		// vérifier avec DB (utilisateurDAO)
-//		//user = UtilisateurDAO.verifPseudoMdpEmail(pseudo, mdp, email);
-//		
-//		// Ajout info utilisateur
-//		session.setAttribute("pseudo", user.getPseudo());
-//		session.setAttribute("mdp", user.getMotDePasse());
-//		session.setAttribute("email", user.getEmail());
-//		
-//		
-//		if(user != null && user.getPseudo() != null) {
-//			
-//			
-//		// Rediriger vers la page d'accueil ?
-//		
-//		//System.out.println("réussi");
-//
-//		session.setAttribute("sessionUtilisateur", user);
+//		if(user.getMotDePasse().equals(mdp) && mdp != null) {			
+//			return true;
+//		}else {	
+//			BusinessException be = new BusinessException();
+//			be.ajouterErreur("Mot de passe incorrecte");
+//		return false;	
 //		}
 //		
-//	} else {
-//		//this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);
-//		//System.out.println("raté");
-//		// Mdp ou indetifiant incorrect
+//	
 //	}
+	
+	private boolean verifPseudo(String pseudo) {
+		Utilisateur user = new Utilisateur();
+		
+		if(pseudo != null) {			
+			return true;
+		}else {			
+			BusinessException be = new BusinessException();
+			be.ajouterErreur("Login incorrecte");
+		return false;
+		}
+	}
+	
+	private boolean verifMdp(String mdp) {
+		Utilisateur user = new Utilisateur();
+		
+		if( mdp != null) {			
+			return true;
+		}else {	
+			BusinessException be = new BusinessException();
+			be.ajouterErreur("Mot de passe incorrecte");
+		return false;	
+		}
+		
+	
+	}
+	
+	
+	
+	
+	
+		
+	
+	
+		
+		
+		
 }

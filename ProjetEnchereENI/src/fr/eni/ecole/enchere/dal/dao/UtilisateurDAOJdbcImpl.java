@@ -5,14 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import fr.eni.ecole.enchere.BusinessException;
 import fr.eni.ecole.enchere.bo.Utilisateur;
 import fr.eni.ecole.enchere.dal.ConnectionDB;
+import fr.eni.ecole.enchere.dal.UtilisateurDAO;
 
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 	//Requête pour vérifier connection utilisateur 
-	//private final static String PSEUDO_MDP = "SELECT * FROM utilisateurs where pseudo=? and mot_de_passe=?;";
+	private final static String AFFICHER_PROFIL = "SELECT * FROM utilisateurs ;";
 	private final static String VERIF_PSEUDO_MDP_EMAIL = "SELECT * FROM utilisateurs where (pseudo = ? or  email=? ) and mot_de_passe=?;";//mettre les colonnes en java 
 	
 	
@@ -36,7 +38,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 	
 	
-	public Utilisateur verifPseudoMdpEmail(String pseudo, String mdp) throws Exception {
+	public Utilisateur verifPseudoMdpEmail(String pseudo, String mdp) throws BusinessException {
 		Utilisateur user = new Utilisateur();
 		
 		try(Connection cnx = ConnectionDB.getConnection())
@@ -53,10 +55,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			}
 		
 		}
-		catch(Exception e)
+		catch(SQLException e)
 		{
+			BusinessException be = new BusinessException();
+			be.ajouterErreur("Erreur");
 			e.printStackTrace();
-			throw new Exception("Erreur sur la vérification de l'utilisateur " + e.getMessage());
+			throw be;
 		}	
 		return user;
 	}

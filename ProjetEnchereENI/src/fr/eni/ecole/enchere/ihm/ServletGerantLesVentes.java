@@ -2,11 +2,7 @@ package fr.eni.ecole.enchere.ihm;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,4 +1,4 @@
-package fr.eni.ecole.enchere.dal.dao;
+package fr.eni.ecole.enchere.dal;
 
 import fr.eni.ecole.enchere.bo.Utilisateur;
 

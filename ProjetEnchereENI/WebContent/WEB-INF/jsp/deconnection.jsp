@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>erreur de connection</title>
+<title>deconnection</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/vente.css" />
 <%@include file="header.jsp"%>
 </head>
 <body>
-<p>Vous devez être connecter pour la suite de vos démarche </p>
-<%@include file="footer.jsp"%>
+<h1>Vous êtes deconnecter</h1>
+
+
+	<%@include file="footer.jsp"%>
 </body>
 </html>

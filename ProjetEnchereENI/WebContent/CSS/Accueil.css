@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Anton&family=Pacifico&display=swap');
 
 .wrapper {
-  width: 1000px;
+  width: 1950px;
   display: flex;
   flex-wrap: wrap;
 font-family: 'Anton';
-    color: white;
+    color: black;
     text-align: center;
     
     flex: auto;
@@ -75,24 +75,14 @@ a {
     text-align: center;
     font-family: 'Anton';
     flex: auto;
-    color: red;
+    color: white;
     background: null;
     text-decoration: underline;
     font-size: 5em;
     background-color: rgba(0, 0, 255, 0);
 }
 
-flex-direction: column;
-}
 
-div {
-    background-color: white;
-    font-size-adjust: auto;
-    text-decoration: underline;
-    font-family: 'Anton';
-    background-color: rgba(0, 0, 255, 0);
-
-}
 
 
 .Article {
@@ -101,17 +91,12 @@ div {
     font-family: 'Anton';
     box-decoration-break: clone;
     background-color: rgba(0, 0, 255, 0);
+    color: 
 
 
 }
 
-    {
-
-    width: 10px;
-    height: 10px;
-    background-color: aqua;
-
-}
+  
 
 
 .Achat {
@@ -125,12 +110,7 @@ div {
 
 }
 
-img {
-    margin-right: 10px;
-    width: 66px;
-    box-sizing: content-box;
-    background-color: rgba(0, 0, 255, 0);
-}
+
 
 
 }
@@ -142,12 +122,9 @@ img {
 }
 
 body {
-    background-image: url(Image/Image/Fond%20abstract_digital_art_geometry_lines_Portrait_Display_Triangle-822847.jpg!d.jpeg);
-  display: flex;
-  flex-wrap: wrap;
-font-family: 'Anton';
-    color: white;
-    text-align: center;
+    
+     background-image: url("img/0-7607_wallpaper-huawei-honor-7x-wallpaper-android-abstract-4k.jpg");
+ 
    
         
     

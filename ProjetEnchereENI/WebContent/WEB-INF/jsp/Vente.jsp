@@ -8,11 +8,13 @@
 
 <meta charset="UTF-8">
 <title>Page de vente</title>
-<!--  <link href="../../CSS/vente.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/vente.css" />
+<%@include file="header.jsp"%>
 </head>
+<br><br>
 <h1>Veuillez rentrée le details de l'article à mettre en vente</h1>
 <body>
+<br><br><br>
 	<form action="ServletGerantLesVentes" method="post">
 		<label for="nom">nom :</label> <input type="text" name="nom">
 		<br> <label for="categorie">categorie :</label> <select
@@ -33,8 +35,9 @@
 			name="description"> <br> <input name="submit"
 			type="submit" value="OK">
 	</form>
-<%@include file="footer.jsp"%>
+
 </body>
+<footer><%@include file="footer.jsp"%></footer>
 </html>
 
 
